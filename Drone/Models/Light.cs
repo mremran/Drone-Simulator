@@ -1,7 +1,10 @@
-﻿namespace Drone.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Drone.Models
 {
     public class Light
     {
+        [Required]
         public int status { get; set; }
     }
 }

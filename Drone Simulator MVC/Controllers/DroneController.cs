@@ -43,84 +43,13 @@ namespace Drone_Simulator_MVC.Controllers
             return View("Index", model);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-        // GET: DroneController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: DroneController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DroneController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Light(IFormCollection collection)
+        public ActionResult Light(SimulatorModel model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            model.DroneState.state = DroneStates.Start;
+            model.Dronelight.status = (model.Dronelight.status == LightEnum.On) ? LightEnum.Off : LightEnum.On;
+            return View("Index", model);
         }
-
-        // GET: DroneController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: DroneController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DroneController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DroneController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
 }

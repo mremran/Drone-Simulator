@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var simModel = Model;
 }
 <h1>Index</h1>
 
@@ -10,20 +12,21 @@
 <hr />
 <div class="row">
     <div class="col-lg-12">
-        <form method="post">
+        @using (Html.BeginForm("", "", FormMethod.Post))
+        {
             <div class="row">
                 <div class="col-md-6">
                     <div>
-                        <label asp-for="DronePosition.xBorder" class="control-label"></label>
-                        <input asp-for="DronePosition.xBorder" class="form-control" />
-                        <span asp-validation-for="DronePosition.xBorder" class="text-danger"></span>
+                        @Html.LabelFor(model=> model.DronePosition.xBorder)
+                        @Html.TextBoxFor(model=> model.DronePosition.xBorder)
+                        @Html.ValidationMessageFor(model => model.DronePosition.xBorder)
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <label asp-for="DronePosition.yBorder" class="control-label"></label>
-                        <input asp-for="DronePosition.yBorder" class="form-control" />
-                        <span asp-validation-for="DronePosition.yBorder" class="text-danger"></span>
+                        @Html.LabelFor(model => model.DronePosition.yBorder)
+                        @Html.TextBoxFor(model => model.DronePosition.yBorder)
+                        @Html.ValidationMessageFor(model => model.DronePosition.yBorder)
                     </div>
                 </div>
             </div>
@@ -51,43 +54,47 @@
                 <div class="col-md-6">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div>
-                        <label asp-for="DronePosition.xcoordinate" class="control-label"></label>
-                        <input asp-for="DronePosition.xcoordinate" class="form-control" />
-                        <span asp-validation-for="DronePosition.xcoordinate" class="text-danger"></span>
+                        @Html.LabelFor(model => model.DronePosition.xcoordinate)
+                        @Html.TextBoxFor(model => model.DronePosition.xcoordinate)
+                        @Html.ValidationMessageFor(model => model.DronePosition.xcoordinate)
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <label asp-for="DronePosition.ycoordinate" class="control-label"></label>
-                        <input asp-for="DronePosition.ycoordinate" class="form-control" />
-                        <span asp-validation-for="DronePosition.ycoordinate" class="text-danger"></span>
+                        @Html.LabelFor(model => model.DronePosition.ycoordinate)
+                        @Html.TextBoxFor(model => model.DronePosition.ycoordinate)
+                        @Html.ValidationMessageFor(model => model.DronePosition.ycoordinate)
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="">
-                        <label asp-for="DroneFlyTime.flytime" class="control-label"></label>
-                        <input asp-for="DroneFlyTime.flytime" class="form-control" />
-                        <span asp-validation-for="DroneFlyTime.flytime" class="text-danger"></span>
+                        @Html.LabelFor(model => model.DroneFlyTime.flytime)
+                        @Html.TextBoxFor(model => model.DroneFlyTime.flytime)
+                        @Html.ValidationMessageFor(model => model.DroneFlyTime.flytime)
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="">
-                        <input asp-for="DroneFlasher.status" class="form-control" type="hidden" />
-                        <input asp-for="DroneState.state" class="form-control" type="hidden" />
+                        <div id="dvLight">Light On</div>
+                        @Html.HiddenFor(model => model.DroneFlasher.status)
+                        @Html.HiddenFor(model => model.DroneState.state)
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <input type="submit" value="Create" class="btn btn-primary" asp-action="" />
+                        @Html.HiddenFor(model => model.Dronelight.status)
+                        <input type="submit" value="Light" class="btn btn-primary" asp-action="Light" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div>
+                        @Html.LabelFor(model => model.DroneHorn.time)
+                        <input type="submit" value="Horn" class="btn btn-primary" asp-action="Horn" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="">
-
+                        <input type="submit" value="Flash" class="btn btn-primary" asp-action="Flash" />
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -96,8 +103,7 @@
                     </div>
                 </div>
             </div>
-
-        </form>
+        }
     </div>
 </div>
 
@@ -109,6 +115,9 @@
             if (@Model.DroneState.state == 1) {
                 $("#dvDronePanel").toggle();
                 $("#dvCoordinates").toggle();
+            }
+            if (@Model.Dronelight.status == 2) {
+                $("#dvLight").toggle();
             }
         });
 

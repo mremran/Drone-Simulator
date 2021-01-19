@@ -1,0 +1,106 @@
+﻿@model Drone_Simulator_MVC.Models.PositionModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>PositionModel</h4>
+<hr />
+<div class="row">
+    <div class="col-lg-12">
+        <form asp-action="Index">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <label asp-for="xBorder" class="control-label"></label>
+                        <input asp-for="xBorder" class="form-control" />
+                        <span asp-validation-for="xBorder" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label asp-for="yBorder" class="control-label"></label>
+                        <input asp-for="yBorder" class="form-control" />
+                        <span asp-validation-for="yBorder" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="dvCoordinates" >
+                <div class="col-md-6">
+                    <div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="button" value="Start" onclick="ToggleDronePane();" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="dvDronePanel">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div>
+                        <label asp-for="xcoordinate" class="control-label"></label>
+                        <input asp-for="xcoordinate" class="form-control" />
+                        <span asp-validation-for="xcoordinate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label asp-for="ycoordinate" class="control-label"></label>
+                        <input asp-for="ycoordinate" class="form-control" />
+                        <span asp-validation-for="ycoordinate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+                        <label asp-for="flyTime" class="control-label"></label>
+                        <input asp-for="flyTime" class="form-control" />
+                        <span asp-validation-for="flyTime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+                        <input asp-for="status" class="form-control" type="hidden" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+                        <input type="button" value="Shutdown" onclick="ToggleDronePane();" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

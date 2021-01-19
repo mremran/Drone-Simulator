@@ -1,0 +1,57 @@
+﻿@model PositionModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Drone Program</h1>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <div class="row">
+            <div class="col-sm">
+                x Boundary: <input class="form-check-input"  placeholder="Maximum x cord boundary" asp-for="@Model.xBorder" />
+            </div>
+            <div class="col-sm">
+                y Boundary: <input class="form-check-input" placeholder="Maximum y cord boundary" asp-for="@Model.yBorder" />
+            </div>
+            <div class="col-sm">
+                <input type="submit" value="Start" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label></label>
+            </div>
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+        <div class="container" id="dvDronePanel" style="display: block">
+
+            <div class="row">
+                <div class="col-sm">
+                    x coordinate: <input class="form-check-input" placeholder="Move to x cord"  asp-for="@Model.xcoordinate"/>
+                </div>
+                <div class="col-sm">
+                    y cordinate: <input class="form-check-input" placeholder="Move to y cord"  asp-for="@Model.ycoordinate"/>
+                </div>
+                <div class="col-sm">
+                    Fly Time: y Boundary: <input placeholder="Flying Time" asp-for="@Model.flyTime" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <input type="submit" value="Fly" />
+                </div>
+                <div class="col-sm">
+                    <input type="submit" value="Reset" />
+                </div>
+                <div class="col-sm">
+                    <input type="submit" value="Shutdown" />
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

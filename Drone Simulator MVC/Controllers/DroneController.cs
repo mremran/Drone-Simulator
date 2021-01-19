@@ -1,19 +1,58 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Drone;
+using Drone_Simulator_MVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Drone_Simulator_MVC.Controllers
 {
     public class DroneController : Controller
     {
+        private readonly ILogger<DroneController> _logger;
+        public iDrone _drone;
+        public SimulatorModel _simulator;
+
+        public DroneController(ILogger<DroneController> logger, iDrone drone)
+        {
+            _logger = logger;
+            _drone = drone;
+            _simulator = new SimulatorModel(drone);
+        }
+
+
         // GET: DroneController
         public ActionResult Index()
         {
-            return View();
+            return View(_simulator);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Start(SimulatorModel model)
+        {
+            model.DroneState.state = DroneStates.Start;
+            return View("Index", model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Shutdown(SimulatorModel model)
+        {
+            model.DroneState.state = DroneStates.Shutdown;
+            model.DronePosition.xBorder = model.DronePosition.yBorder = 0;
+            return View("Index", model);
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: DroneController/Details/5
         public ActionResult Details(int id)
@@ -30,7 +69,7 @@ namespace Drone_Simulator_MVC.Controllers
         // POST: DroneController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Light(IFormCollection collection)
         {
             try
             {

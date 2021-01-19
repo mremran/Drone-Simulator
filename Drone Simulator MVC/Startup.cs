@@ -1,3 +1,5 @@
+using Drone;
+using Drone_Simulator_MVC.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,8 @@ namespace Drone_Simulator_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<iDrone, APD001_XE02>();
+            //services.AddSingleton<SimulatorModel, SimulatorModel()>();
             services.AddControllersWithViews();
         }
 

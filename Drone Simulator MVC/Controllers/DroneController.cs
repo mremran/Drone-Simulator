@@ -51,5 +51,5 @@ namespace Drone_Simulator_MVC.Controllers
             model.Dronelight.status = (model.Dronelight.status == LightEnum.On) ? LightEnum.Off : LightEnum.On;
             return View("Index", model);
         }
-            }
+    }
 }

@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Util
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drone Simulator MVC", "Drone Simulator MVC\Drone Simulator MVC.csproj", "{F15AB603-D543-450E-8FE6-DA0235789CC3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{B5BC46F9-2411-46D1-8405-FF6A20E67EEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4959E470-9AC8-4634-A17C-2C8351E356F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +137,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E59D2AA1-091F-4937-B09A-57F77FDA2227} = {B5BC46F9-2411-46D1-8405-FF6A20E67EEC}
+		{250B2743-EDBB-4833-99D9-5F2CB3808B2D} = {B5BC46F9-2411-46D1-8405-FF6A20E67EEC}
+		{4078CC3B-BE56-49FD-BDB0-9D7FB6BE8EF8} = {B5BC46F9-2411-46D1-8405-FF6A20E67EEC}
+		{10177BBC-F32B-452F-AE29-46038DF6AC31} = {B5BC46F9-2411-46D1-8405-FF6A20E67EEC}
+		{F15AB603-D543-450E-8FE6-DA0235789CC3} = {B5BC46F9-2411-46D1-8405-FF6A20E67EEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3651CEA-8921-45A9-BD0B-72DCE6F14AFF}

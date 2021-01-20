@@ -31,14 +31,14 @@ namespace Drone_Simulator_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Start(SimulatorModel model)
         {
-            model.DroneState.state = DroneStates.Start;
+            //model.DroneState.state = DroneStates.Start;
             return View("Index", model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Shutdown(SimulatorModel model)
         {
-            model.DroneState.state = DroneStates.Shutdown;
+            //model.DroneState.state = DroneStates.Shutdown;
             model.DronePosition.xBorder = model.DronePosition.yBorder = 0;
             return View("Index", model);
         }
@@ -47,7 +47,7 @@ namespace Drone_Simulator_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Light(SimulatorModel model)
         {
-            model.DroneState.state = DroneStates.Start;
+            //model.DroneState.state = DroneStates.Start;
             model.Dronelight.status = (model.Dronelight.status == LightEnum.On) ? LightEnum.Off : LightEnum.On;
             return View("Index", model);
         }

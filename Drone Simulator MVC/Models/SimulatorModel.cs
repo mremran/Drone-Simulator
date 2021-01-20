@@ -41,7 +41,7 @@ namespace Drone_Simulator_MVC.Models
             DroneHorn.status = LightEnum.Off;
             DronePosition.xBorder = DronePosition.yBorder = DronePosition.xcoordinate = DronePosition.ycoordinate = 0;
             DroneFlyTime.flytime = 0;
-            DroneState.state = DroneStates.Shutdown;
+            //DroneState.state = DroneStates.Shutdown;
         }
     }
 }
